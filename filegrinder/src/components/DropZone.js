@@ -80,8 +80,8 @@ export default function DropZone( props )  {
     }
 
     return(
-        <div style={containerStyle} onDragOver={handleOnDragOver} onDragLeave={handleOnDragLeave} onDrop={handleOnDrop}>
-            <p data-testid="todo-1" style={textStyle}>Drop File...</p>
+        <div role="drop-area" style={containerStyle} onDragOver={handleOnDragOver} onDragLeave={handleOnDragLeave} onDrop={handleOnDrop}>
+            <p style={textStyle}>Drop File...</p>
         </div>
     );    
 
