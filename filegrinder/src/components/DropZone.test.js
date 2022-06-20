@@ -69,5 +69,20 @@ describe( DropZone, () => {
 
     });
 
+    it("Drag over changes the border width",() => {
+
+        const handleDrop = jest.fn();
+
+        const { container } = render( <DropZone onTextLoaded={ handleDrop }/> );  
+        const dropArea = getByRole(container, "drop-area");
+
+        expect( dropArea.style.border ).toBe('1px solid #bbbbbb');            
+
+        fireEvent.dragOver( dropArea );
+
+        expect( dropArea.style.border ).toBe('3px solid #bbbbbb');            
+
+    });
+
 });
 
