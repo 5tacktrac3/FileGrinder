@@ -1,6 +1,7 @@
 import { render, renderHook, screen, fireEvent, getByRole } from "@testing-library/react"
 
 import DropZone from './DropZone';
+import {COLOURS} from '../Constants'
 
 describe( DropZone, () => {
 
@@ -18,13 +19,13 @@ describe( DropZone, () => {
     
     it("On Start: Initial style set",() => {
         const {result} = renderHook( () => DropZone() );
-        expect( result.current.props.style.border ).toBe('1px solid #bbbbbb');       
+        expect( result.current.props.style.border ).toBe('2px solid ' + COLOURS.ISLAMIC_GREEN );       
     });
 
     it("On Start: Initial style set (Alt Method)",() => {
         const { container } = render( <DropZone /> );   
         const border = getByRole(container, "drop-area").style.border;
-        expect( border ).toBe('1px solid #bbbbbb');
+        expect( border ).toBe('2px solid ' + COLOURS.ISLAMIC_GREEN);
     });
     
 
@@ -65,7 +66,7 @@ describe( DropZone, () => {
             });
 
         const innerTextAfter = getByRole(container, "drop-area").style.backgroundColor;
-        expect( innerTextAfter ).toBe('rgb(187, 187, 187)');            
+        expect( innerTextAfter ).toBe('rgb(0, 59, 0)');            
 
     });
 
@@ -76,11 +77,11 @@ describe( DropZone, () => {
         const { container } = render( <DropZone onTextLoaded={ handleDrop }/> );  
         const dropArea = getByRole(container, "drop-area");
 
-        expect( dropArea.style.border ).toBe('1px solid #bbbbbb');            
+        expect( dropArea.style.border ).toBe('2px solid ' + COLOURS.ISLAMIC_GREEN);            
 
         fireEvent.dragOver( dropArea );
 
-        expect( dropArea.style.border ).toBe('3px solid #bbbbbb');            
+        expect( dropArea.style.border ).toBe('3px solid ' + COLOURS.ISLAMIC_GREEN);            
 
     });
 

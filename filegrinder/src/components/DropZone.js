@@ -1,28 +1,31 @@
 import React, {useEffect, useState} from 'react';
 
 const textStyle = {
-    color : '#bbbbbb',
+    color : '#00FF41',
 };
 
 const containerStyle = {
     margin : '10px',
     padding : '10px',
+    textAlign : 'left'
 };
 
 const containerStyle_Idle = {
     ...containerStyle,
-    border: '1px solid #bbbbbb'
+    border: '2px solid #008f11'
 };
 
 const containerStyle_Hover = {
+    ...containerStyle,    
     margin : '9px',
     padding : '9px',
-    border: '3px solid #bbbbbb'
+    border: '3px solid #008f11'
 };
 
 const containerStyle_Dropped = {
     ...containerStyle,
-    background : '#bbbbbb'
+    border: '2px solid #008f11',
+    backgroundColor : '#003B00'
 };
 
 const DRAG_STATES = {
