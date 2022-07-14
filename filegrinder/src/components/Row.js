@@ -14,14 +14,10 @@ export default function Row( props ) {
 
     var elements = processRow( props.contents, props.persistedConfigs, props.previewConfig );
 
-    elements.forEach( ele => {
-        ele.content = ele.content.replaceAll(" ", "\u00a0");
-    } );
-
     return(
         <div style={outerRowStyle} >            
             {                
-                elements.map( (e) => ( <div key={e.key} style={e.style}>{e.content}</div> ) )
+                elements.map( (e) => ( <pre key={e.key} style={e.style}>{e.content}</pre> ) )
             }
         </div>
     );    

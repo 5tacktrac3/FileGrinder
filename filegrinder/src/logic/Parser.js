@@ -81,9 +81,7 @@ export const buildRowArray = ( text, persistedConfigs ) => {
 
     try {
 
-        // const xText = text.replaceAll(" ", "\u00a0");
         const xText = text;
-
         var results = SplitTextByIndexes(xText,allIndexes)
 
         // console.log( "First Slice");
@@ -121,7 +119,7 @@ export const buildRowArray = ( text, persistedConfigs ) => {
                 var matchedValue = ele.slice(0,matchString.length);
                 if ( matchedValue.length > 0 ) {
                     finalArray.push(
-                        { key: id, style: { color : "#" + matchedHighlight, fontSize : '14px' }, content : matchedValue }
+                        { key: id, style: { color : "#" + matchedHighlight, fontSize : '14px', margin : '0px' }, content : matchedValue }
                     );
                     id++;
                 }
@@ -129,7 +127,7 @@ export const buildRowArray = ( text, persistedConfigs ) => {
                 var theRest = ele.slice(matchString.length, ele.length);
                 if ( theRest.length > 0 ) { 
                     finalArray.push(
-                        { key: id, style: { color : "#FFFFFF", fontSize : '14px' }, content : theRest }
+                        { key: id, style: { color : "#FFFFFF", fontSize : '14px', margin : '0px' }, content : theRest }
                     );
                     id++;
                 };
@@ -138,7 +136,7 @@ export const buildRowArray = ( text, persistedConfigs ) => {
             else 
             {
                 finalArray.push(
-                    { key: id, style: { color : "#FFFFFF", fontSize : '14px' }, content : ele }
+                    { key: id, style: { color : "#FFFFFF", fontSize : '14px', margin: '0px' }, content : ele }
                 );
                 id++;
             }
