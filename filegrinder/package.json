@@ -1,7 +1,7 @@
 {
   "name": "filegrinder",
   "version": "0.7.0",
-  "homepage": "https://5tacktrac3.github.io/filegrinder",
+  "homepage": "https://5tacktrac3.github.io/FileGrinder",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
