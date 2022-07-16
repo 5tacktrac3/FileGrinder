@@ -7,12 +7,21 @@ const outerRowStyle = {
 }
 
 function processRow( text, persistedConfigs ) {
+
+    // Check For Full Line Colour
     return buildRowArray( text, persistedConfigs );
 }
 
 export default function Row( props ) {
 
-    var elements = processRow( props.contents, props.persistedConfigs, props.previewConfig );
+    var elements = [];
+    if ( props.lineHighlight.length > 0 ) {
+        elements.push(
+            { key: 1, style: { color : "#"+props.lineHighlight, fontSize : '14px', margin : '0px' }, content : props.contents }
+        );
+    } else {
+        elements = processRow( props.contents, props.persistedConfigs );
+    }
 
     return(
         <div style={outerRowStyle} >            

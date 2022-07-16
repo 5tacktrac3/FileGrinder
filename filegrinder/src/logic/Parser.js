@@ -1,5 +1,8 @@
 // Takes the text of a row and finds the indexes of matching
 // strings or regex. Returning them as a list.
+
+import {KEYS} from './Config';
+
 export function GetAllIndexes( text, searchString, bRegex ) {
 
     var startPos = 0;
@@ -31,7 +34,7 @@ export function GetAllIndexes( text, searchString, bRegex ) {
 
 // Takes the text of a single row and returns a list
 // split by the indexes provided
-function SplitTextByIndexes( rowText, allIndexes ) {
+export function SplitTextByIndexes( rowText, allIndexes ) {
 
     // Split at indexes
     var position = 0;
@@ -96,19 +99,21 @@ export const buildRowArray = ( text, persistedConfigs ) => {
             var matchedHighlight = "";
 
             for ( var i = 0; i < testPersist.length; i++ ){
-                if ( testPersist[i].REGEX ) {
-                    var expression = new RegExp(testPersist[i].SEARCH);        
-                    if ( expression.test( ele ) ) {
-                        matchString = ele.match(testPersist[i].SEARCH)[0];
-                        matchedHighlight = testPersist[i].HIGHLIGHT;                        
+                if ( matchString.length === 0 ) {
+                    if ( testPersist[i].REGEX ) {
+                        var expression = new RegExp(testPersist[i].SEARCH);        
+                        if ( expression.test( ele ) ) {
+                            matchString = ele.match(testPersist[i].SEARCH)[0];
+                            matchedHighlight = testPersist[i].HIGHLIGHT;                        
+                        }
                     }
-                }
-                else
-                {
-                    const searchString = testPersist[i].SEARCH;
-                    if ( ele.includes( searchString ) ) {
-                        matchString = searchString;
-                        matchedHighlight = testPersist[i].HIGHLIGHT;
+                    else
+                    {
+                        const searchString = testPersist[i].SEARCH;
+                        if ( ele.includes( searchString ) ) {
+                            matchString = searchString;
+                            matchedHighlight = testPersist[i].HIGHLIGHT;
+                        }    
                     }    
                 }
             }
@@ -124,10 +129,11 @@ export const buildRowArray = ( text, persistedConfigs ) => {
                     id++;
                 }
 
+                let defaultColour = "#FFFFFF";
                 var theRest = ele.slice(matchString.length, ele.length);
                 if ( theRest.length > 0 ) { 
                     finalArray.push(
-                        { key: id, style: { color : "#FFFFFF", fontSize : '14px', margin : '0px' }, content : theRest }
+                        { key: id, style: { color : defaultColour, fontSize : '14px', margin : '0px' }, content : theRest }
                     );
                     id++;
                 };
@@ -135,6 +141,7 @@ export const buildRowArray = ( text, persistedConfigs ) => {
             }
             else 
             {
+                // No Highlight Found 
                 finalArray.push(
                     { key: id, style: { color : "#FFFFFF", fontSize : '14px', margin: '0px' }, content : ele }
                 );

@@ -1,5 +1,5 @@
 
-import { GetAllIndexes } from './Parser';
+import { GetAllIndexes, SplitTextByIndexes } from './Parser';
 
 describe( "Testing the GetAllIndexes function", () => {
 
@@ -36,6 +36,43 @@ describe( "Testing the GetAllIndexes function", () => {
     it("ensure that not matching results in an empty array (Using REGEX)", () => {
         const indexes = GetAllIndexes("This is a 777 large piece 665 of text", "[0-9]{5}", true)
         expect( indexes ).toEqual( [] );
+    })
+
+});
+
+
+describe( "Testing the SplitText function", () => {
+
+    it("Basic Test", () => {
+        const indexes = SplitTextByIndexes("XXXXYYYYYYZZZZ", [4,10]);
+        expect( indexes ).toEqual(["XXXX","YYYYYY","ZZZZ"]);
+    })
+
+});
+
+
+describe( "Some Basic Combinations", () => {
+
+    it("Split on a single word", () => {
+
+        const indexes = GetAllIndexes("The mouse took a stroll", "took", false);
+        expect( indexes ).toEqual([10]);
+
+        const results = SplitTextByIndexes("The mouse took a stroll", indexes);
+        expect( results ).toEqual(["The mouse ","took a stroll"]);
+
+    })
+
+    it("Split on a two matching words ", () => {
+
+        const indexes = GetAllIndexes("The mouse took a stroll through the deep dark wood. The mouse saw a nut, and the nut loooked good.", "mouse", false);
+        expect( indexes ).toEqual([4,56]);
+
+        const results = SplitTextByIndexes("The mouse took a stroll through the deep dark wood. The mouse saw a nut, and the nut loooked good.", indexes);
+        expect( results ).toEqual(  [   "The ",
+                                        "mouse took a stroll through the deep dark wood. The ",
+                                        "mouse saw a nut, and the nut loooked good."]);
+
     })
 
 });

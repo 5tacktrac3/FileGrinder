@@ -4,3 +4,7 @@ export const COLOURS = {
     ISLAMIC_GREEN : "#008f11",
     MALACHITE : "#00ff41"
 };
+
+export const MISC = {
+    CONFIG_KEY : "FILE-GRINDER-CONFIG"
+}

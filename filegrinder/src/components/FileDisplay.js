@@ -1,5 +1,6 @@
 import React from 'react';
 
+import {KEYS} from '../logic/Config'
 import Row from './Row';
 
 const containerStyle = {
@@ -38,27 +39,48 @@ export default function FileDisplay( props ) {
 
     console.log("File Display Running...");
 
-    const rawText = props.allText;
-
-    // Process Text
-    // Jump into a second list (future requirement to designate lines to not show)
-    var lineNumber = 1;
-    const annotatedText = [];
-    rawText.forEach(element => {
-        var newElement = {};
-        newElement["LineNumber"] = lineNumber;
-        newElement["Content"] = element;
-        annotatedText.push( newElement );
-        lineNumber++;
-    });
-
     // Carefully insert current search into persisted config.
     var psuedoConfig = [];
     props.persistedConfigs.forEach( element => {
         psuedoConfig.push( element );
     });
-
     psuedoConfig.push( props.currentPreviewSearch );
+
+    // Process Text
+    const rawText = props.allText;
+
+    var lineNumber = 1;
+    const annotatedText = [];
+    rawText.forEach(element => {
+
+        let bMatch = false
+        let fullLineHighlight = "";
+
+        psuedoConfig.forEach( eachConfig => {
+
+            let bTextMatch = element.includes( eachConfig[KEYS.SEARCH] );
+
+            if ( bTextMatch && eachConfig[KEYS.HIDE] === true ) {
+                bMatch = true;
+            }
+
+            if ( bTextMatch && eachConfig[KEYS.FULLLINE] === true ) {
+                fullLineHighlight = eachConfig[KEYS.HIGHLIGHT];
+            }
+
+        });
+
+        if ( !bMatch ) {
+            var newElement = {};
+            newElement["LineNumber"] = lineNumber;
+            newElement["Content"] = element;
+            newElement["FullLine"] = fullLineHighlight;
+            annotatedText.push( newElement );
+            lineNumber++;            
+        }
+
+    });
+
 
     return(
         <div style={containerStyle}>
@@ -67,7 +89,7 @@ export default function FileDisplay( props ) {
             </div>
             <div style={bodyStyle}>
                 {
-                    annotatedText.map( (e) => ( <Row key={e["LineNumber"]} contents={e["Content"]} persistedConfigs={psuedoConfig} /> ) )
+                    annotatedText.map( (e) => ( <Row key={e["LineNumber"]} contents={e["Content"]} lineHighlight={e["FullLine"]} persistedConfigs={psuedoConfig} /> ) )
                 }
             </div>
         </div>

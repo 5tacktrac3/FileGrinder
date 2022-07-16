@@ -1,0 +1,9 @@
+FILE-GRINDER-CONFIG
+V1
+
+.,Text,Highlight,Regex,Full Line, Hide
+
+.,Date Highlighting
+#,[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2},88CC88,T,F,F
+#,[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2},88CC88,T,F,F
+

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 
 import ConfigRow from './ConfigRow';
 
@@ -53,9 +53,10 @@ function ConfigBar( props )  {
             </div>
             <div style={tableStyle}>
                 <div style={headingStyle}>
-                    <div style={headingCellStyle}>Test</div>
+                    <div style={headingCellStyle}>Text</div>
                     <div style={headingCellStyle}>Highlight</div>
                     <div style={headingCellStyle}>Regex</div>
+                    <div style={headingCellStyle}>Full Line</div>
                     <div style={headingCellStyle}>Hide</div>
                     <div style={headingCellStyle}></div>
                 </div>                
