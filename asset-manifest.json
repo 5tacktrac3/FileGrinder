@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/filegrinder/static/css/main.32f943f7.css",
+    "main.js": "/filegrinder/static/js/main.45db769c.js",
+    "static/js/787.f222eeae.chunk.js": "/filegrinder/static/js/787.f222eeae.chunk.js",
+    "index.html": "/filegrinder/index.html",
+    "main.32f943f7.css.map": "/filegrinder/static/css/main.32f943f7.css.map",
+    "main.45db769c.js.map": "/filegrinder/static/js/main.45db769c.js.map",
+    "787.f222eeae.chunk.js.map": "/filegrinder/static/js/787.f222eeae.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.32f943f7.css",
+    "static/js/main.45db769c.js"
+  ]
+}
