@@ -142,7 +142,7 @@ function HighlightBar( props ) {
                         style={cbStyle} 
                         value={searchState.Regex} 
                         onChange={ (e) => handleSearchChange( { Type : KEYS.REGEX, Value : e.target.value } ) } />
-                <label  style={labelStyle}>Highlight:</label>
+                <label  style={labelStyle}>Highlight: #</label>
                 <input  type="text" 
                         style={inputHighlightStyle} 
                         value={searchState.Highlight} 

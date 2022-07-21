@@ -37,8 +37,6 @@ const bodyStyle = {
 
 export default function FileDisplay( props ) {
 
-    console.log("File Display Running...");
-
     // Carefully insert current search into persisted config.
     var psuedoConfig = [];
     props.persistedConfigs.forEach( element => {

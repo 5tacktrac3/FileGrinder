@@ -1,19 +1,21 @@
 import React, {useState} from 'react';
 
-import {KEYS} from '../logic/Config';
+import Checkbox from './Checkbox';
+import { KEYS } from '../logic/Config';
 
 const textStyle = {
     color : '#bbbbbb'
 };
 
 const containerStyle = {
-    display : 'table-row',
+    display : 'table-row'
 };
 
 const cellStyle = {
     display : 'table-cell',
     paddingRight : '50px',
-    color : '#bbbbbb'
+    color : '#bbbbbb',
+    fontWeight : 'bold'
 }
 
 const addButtonStyle = {
@@ -36,13 +38,18 @@ function ConfigRow( props )  {
     const fullline = props.config[KEYS.FULLLINE];
     const hide = props.config[KEYS.HIDE];
 
+    const handleRegexUpdate = (e) => {};
+    const handleFulllineUpdate = (e) => {};
+    const handleHideUpdate = (e) => {};
+
     return(
         <div style={containerStyle}>
             <div style={cellStyle}>{search}</div>
             <div style={cellStyle}>{highlight}</div>
-            <div style={cellStyle}>{regex?'True':'False'}</div>
-            <div style={cellStyle}>{fullline?'True':'False'}</div>
-            <div style={cellStyle}>{hide?'True':'False'}</div>
+            <div style={cellStyle}><Checkbox checked={regex} onUpdate={handleRegexUpdate} /></div>
+            <div style={cellStyle}><Checkbox checked={fullline} onUpdate={handleFulllineUpdate} /></div>
+            <div style={cellStyle}><Checkbox checked={hide} onUpdate={handleHideUpdate} /></div>
+
             <div style={cellStyle}>
                 <input type="button" value="Remove" style={addButtonStyle} onClick={ (e) => props.removeRequest( props.text ) } />
             </div>

@@ -19,16 +19,17 @@ const titleStyle = {
 };
 
 const titleTextStyle = {
-    color : '#00FF41',
     fontWeight : 'bold',
     margin : '0px',
-    padding : '0px'
+    padding : '0px',
+    color : '#00ff41'
 };
 
 const tableStyle = {
     display : 'table',
     marginLeft : '5px',
-    marginRight : '5px'
+    marginRight : '5px',
+    borderSpacing : '5px'
 }
 
 const headingStyle = {
@@ -39,7 +40,7 @@ const headingStyle = {
 const headingCellStyle = {
     display : 'table-cell',
     paddingRight : '50px',
-    color : '#bbbbbb'    
+    color : '#FFFFFF'
 }
 
 
