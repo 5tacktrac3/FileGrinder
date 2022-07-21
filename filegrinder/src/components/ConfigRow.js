@@ -38,15 +38,14 @@ function ConfigRow( props )  {
     const fullline = props.config[KEYS.FULLLINE];
     const hide = props.config[KEYS.HIDE];
 
-    const handleRegexUpdate = (e) => {};
-    const handleFulllineUpdate = (e) => {};
-    const handleHideUpdate = (e) => {};
+    const handleFulllineUpdate = (e) => { props.itemUpdated( search, highlight, KEYS.FULLLINE, e ); };
+    const handleHideUpdate = (e) => { props.itemUpdated( search, highlight, KEYS.HIDE, e ); };
 
     return(
         <div style={containerStyle}>
             <div style={cellStyle}>{search}</div>
             <div style={cellStyle}>{highlight}</div>
-            <div style={cellStyle}><Checkbox checked={regex} onUpdate={handleRegexUpdate} /></div>
+            <div style={cellStyle}><Checkbox checked={regex} /></div>
             <div style={cellStyle}><Checkbox checked={fullline} onUpdate={handleFulllineUpdate} /></div>
             <div style={cellStyle}><Checkbox checked={hide} onUpdate={handleHideUpdate} /></div>
 

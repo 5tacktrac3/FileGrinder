@@ -2,6 +2,8 @@ import React from 'react';
 
 import ConfigRow from './ConfigRow';
 
+import {KEYS} from '../logic/Config';
+
 const containerStyle = {
     margin : '10px 10px',
     padding : '10px 0px',
@@ -64,6 +66,7 @@ function ConfigBar( props )  {
                 {
                     props.persistedConfigs.map( (e) => ( <ConfigRow key={e.SEARCH+e.HIGHLIGHT} 
                                                                     config={e}
+                                                                    itemUpdated={ props.onConfigItemUpdated }
                                                                     removeRequest={props.removeRequest} /> ) )
                 }
             </div>

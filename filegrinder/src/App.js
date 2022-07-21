@@ -17,6 +17,26 @@ function App() {
   const [previewSearch, setPreviewSearch] = useState( {} );
   const [persistedConfigs, setPersistedConfigs] = useState( [] );
 
+  const handleConfigItemUpdated = ( searchKey, highlight, name, value ) => {
+
+    var found = -1;
+    var index;
+
+    for ( index = 0; index < persistedConfigs.length; index++){
+        if (  persistedConfigs[index][ KEYS.SEARCH ] == searchKey && 
+              persistedConfigs[index][ KEYS.HIGHLIGHT ] == highlight ) {
+            found = index;
+        }
+    }
+
+    if ( found !== -1 ){
+      var copy =  [...persistedConfigs];
+      copy[found][name] = value;
+      setPersistedConfigs(copy);
+    }
+
+  };
+
   // Text Loaded into Page 
   function textLoaded( file ) {
     let reader = new FileReader();
@@ -96,7 +116,7 @@ function App() {
       <DropZone onTextLoaded={textLoaded} />
       <HighlightBar   onSearchUpdated={searchUpdated} 
                       onPersistHighlightConfig={persistHighlightConfig} />
-      <ConfigBar persistedConfigs={persistedConfigs} removeRequest={removeConfig} />
+      <ConfigBar persistedConfigs={persistedConfigs} onConfigItemUpdated={handleConfigItemUpdated} removeRequest={removeConfig} />
       <FileDisplay allText={fileContents} currentPreviewSearch={previewSearch} persistedConfigs={persistedConfigs} />
     </div>
   );

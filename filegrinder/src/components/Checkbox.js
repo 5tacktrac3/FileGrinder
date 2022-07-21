@@ -6,9 +6,11 @@ export default function Checkbox( props ) {
     const [checked, setChecked] = useState(props.checked);
 
     const onUpdate = () => {
-        const newState = !checked;
-        setChecked(newState);
-        props.onUpdate(newState);
+        if ( props.onUpdate !== undefined) {
+            const newState = !checked;
+            setChecked(newState);
+            props.onUpdate(newState);    
+        }
     }
 
     return(
